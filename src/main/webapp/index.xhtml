@@ -13,5 +13,8 @@
 		<h:outputText value="Test Output for Training Java EE Web Application"></h:outputText><br />
 	</h:head>
 	<h:outputText value="#{index.hello}"></h:outputText>
+	<h:form>
+		<h:commandButton action="#{firstController.test}" value="JPA Ausgabe über Server-Log"/>
+	</h:form>
 </h:body>
 </html>
