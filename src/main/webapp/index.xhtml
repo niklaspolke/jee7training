@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<title>
 		<h:outputText value="Training Java EE" />
@@ -12,9 +14,13 @@
 	<h:head>
 		<h:outputText value="Test Output for Training Java EE Web Application"></h:outputText><br />
 	</h:head>
-	<h:outputText value="#{index.hello}"></h:outputText>
-	<h:form>
-		<h:commandButton action="#{firstController.test}" value="JPA Ausgabe über Server-Log"/>
-	</h:form>
+	<div id="content">
+		<div id="maincontent">
+			<p:inputText value="#{index.hello}"></p:inputText>
+			<h:form>
+				<h:commandButton action="#{firstController.test}" value="JPA Ausgabe über Server-Log"/>
+			</h:form>
+		</div>
+	</div>
 </h:body>
 </html>
