@@ -10,6 +10,11 @@
   <name>Training Java EE</name>
   <url>http://maven.apache.org</url>
   
+  <!-- if start of tomcat with Eclipse WTP-Plugin, then set
+       shared.loader="${catalina.home}/shared/lib","${catalina.home}/shared/lib/*.jar"
+       in catalina.properties to use shared libs
+       (javax.faces, javax.persistence, eclipselink, sqlite-jdbc)
+    -->
   <dependencies>
     <dependency>
   		<groupId>javax.faces</groupId>
@@ -22,7 +27,7 @@
   		<groupId>org.glassfish</groupId>
   		<artifactId>javax.faces</artifactId>
   		<version>2.2.11</version>
-  		<scope>provided</scope> <!-- normally runtime, but currently in tomcat folder common/lib -->
+		<scope>provided</scope> <!-- normally runtime, but currently in tomcat folder shared/lib -->
 	</dependency>
 	<dependency>
 		<!-- JSF library primefaces -->
@@ -35,7 +40,7 @@
         <groupId>org.eclipse.persistence</groupId>
         <artifactId>eclipselink</artifactId>
         <version>2.6.1-RC1</version>
-        <scope>provided</scope> <!-- normally runtime, but currently in tomcat folder common/lib -->
+        <scope>provided</scope> <!-- normally runtime, but currently in tomcat folder shared/lib -->
     </dependency>
   </dependencies>
   <build>
