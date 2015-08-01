@@ -5,7 +5,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 <f:view locale="#{localeBean.locale}" />
-<f:loadBundle var="msg" basename="messages.messages" />
+<f:loadBundle var="msgIndex" basename="messages.index" />
 <h:head>
 	<title>
 		<h:outputText value="Training Java EE" />
@@ -17,27 +17,27 @@
 </h:head>
 <h:body>
 	<h:head>
-		<h:outputText value="#{msg['index.title']}" /><br />
+		<h:outputText value="#{msg['msg.title']}" /><br />
 	</h:head>
 	<div id="content" class="pure-g">
 		<div id="maincontent" class="pure-u-1 pure-u-md-1-3">
 			<p:inputText value="#{index.hello}"></p:inputText>
 			<h:form>
-				<h:commandButton action="#{firstController.test}" value="#{msg['index.button.test']}"/>
+				<h:commandButton action="#{firstController.test}" value="#{msgIndex['index.button.test']}"/>
 			</h:form>
 		</div>
 		<div class="pure-u-1 pure-u-md-1-3">
-			<h:outputText value="#{msg['index.column2']}" />
+			<h:outputText value="#{msgIndex['index.column2']}" />
 		</div>
 		<div class="pure-u-1 pure-u-md-1-3">
-			<h:outputText value="#{msg['index.column3']}" />
+			<h:outputText value="#{msgIndex['index.column3']}" />
 		</div>
 	</div>
 	<h:form>
-		<h:outputText value="#{msg['index.languageswitch']}" />
+		<h:outputText value="#{msg['msg.languageswitch']}" />
 		<h:selectOneMenu value="#{localeBean.language}" onchange="submit()">
-			<f:selectItem itemValue="de" itemLabel="#{msg['index.language.german']}" />
-			<f:selectItem itemValue="en" itemLabel="#{msg['index.language.english']}" />
+			<f:selectItem itemValue="de" itemLabel="#{msg['msg.language.german']}" />
+			<f:selectItem itemValue="en" itemLabel="#{msg['msg.language.english']}" />
 		</h:selectOneMenu>
 	</h:form>
 </h:body>
