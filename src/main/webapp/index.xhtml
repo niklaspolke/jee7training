@@ -4,6 +4,8 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
+<f:view locale="#{localeBean.locale}" />
+<f:loadBundle var="msg" basename="messages.messages" />
 <h:head>
 	<title>
 		<h:outputText value="Training Java EE" />
@@ -15,21 +17,28 @@
 </h:head>
 <h:body>
 	<h:head>
-		<h:outputText value="Test Output for Training Java EE Web Application"></h:outputText><br />
+		<h:outputText value="#{msg['index.title']}" /><br />
 	</h:head>
 	<div id="content" class="pure-g">
 		<div id="maincontent" class="pure-u-1 pure-u-md-1-3">
 			<p:inputText value="#{index.hello}"></p:inputText>
 			<h:form>
-				<h:commandButton action="#{firstController.test}" value="JPA Ausgabe über Server-Log"/>
+				<h:commandButton action="#{firstController.test}" value="#{msg['index.button.test']}"/>
 			</h:form>
 		</div>
 		<div class="pure-u-1 pure-u-md-1-3">
-			AAA Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+			<h:outputText value="#{msg['index.column2']}" />
 		</div>
 		<div class="pure-u-1 pure-u-md-1-3">
-			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+			<h:outputText value="#{msg['index.column3']}" />
 		</div>
 	</div>
+	<h:form>
+		<h:outputText value="#{msg['index.languageswitch']}" />
+		<h:selectOneMenu value="#{localeBean.language}" onchange="submit()">
+			<f:selectItem itemValue="de" itemLabel="#{msg['index.language.german']}" />
+			<f:selectItem itemValue="en" itemLabel="#{msg['index.language.english']}" />
+		</h:selectOneMenu>
+	</h:form>
 </h:body>
 </html>
