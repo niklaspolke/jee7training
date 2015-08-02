@@ -28,9 +28,9 @@ public class FirstController {
         // Store 2 User objects in the database:
         em.getTransaction().begin();
         logger.info("EntityManager is open: " + em.isOpen());
-        User u = new User("Karl Schmidt", "email@adresse.de", "password");
+        User u = new User("KarlSchmidt", "password");
         em.persist(u);
-        u = new User("Stefan Kaiser", "emailadresse@provider.de", "mypassword");
+        u = new User("StefanKaiser", "mypassword");
         em.persist(u);
         em.getTransaction().commit();
  
