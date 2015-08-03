@@ -1,9 +1,14 @@
 # Training Java EE 7 Web Application
 Web Application for personal training of the tools and technologies:
-* Java EE 7
-* JSF
-* Maven
 * Git
+* GitHub
+* Java EE 7
+* Java Persistence API
+* Java Server Faces
+* Maven
+* PrimeFaces
+* Pure(.css)
+* SQLite
 * Tomcat
 
 ## License
