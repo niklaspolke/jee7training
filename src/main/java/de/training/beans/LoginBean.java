@@ -2,8 +2,10 @@ package de.training.beans;
 
 import java.util.logging.Logger;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 @ManagedBean
 @SessionScoped
@@ -35,6 +37,18 @@ public class LoginBean {
     	
     	if (username != null && username.length() > 0 && password != null && password.length() > 0) {
     		//TODO:do the username/password check
+    		FacesContext fContext = FacesContext.getCurrentInstance();
+    		if (username.equals(password)) {
+    			FacesMessage m = new FacesMessage("Successfull login as " + username);
+    			fContext.addMessage(null, m);
+    		} else {
+    			FacesMessage msgGlobal = new FacesMessage("Login failed");
+    			FacesMessage msgUsername = new FacesMessage("Login possibly unknown");
+    			FacesMessage msgPassword = new FacesMessage("Password possibly wrong");
+    			fContext.addMessage(null, msgGlobal);
+    			fContext.addMessage("username", msgUsername);
+    			fContext.addMessage("password", msgPassword);
+    		}
     	}
     }
 

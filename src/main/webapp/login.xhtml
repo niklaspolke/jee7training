@@ -20,12 +20,15 @@
 	<h:head>
 		<h1><h:outputText value="#{msgLogin['title']}" /></h1>
 	</h:head>
-	<h:form>
-		<h:panelGrid columns="2">
+	<h:form prependId="false">
+	    <h:messages globalOnly="true" />
+		<h:panelGrid columns="3">
 			<h:outputLabel value="#{msgLogin['form.username']}" />
-			<h:inputText value="#{loginBean.username}" />
+			<h:inputText id="username" value="#{loginBean.username}" />
+			<h:message for="username" />
 			<h:outputLabel value="#{msgLogin['form.password']}" />
-            <h:inputSecret value="#{loginBean.password}" />
+            <h:inputSecret id="password" value="#{loginBean.password}" />
+            <h:message for="password" />
         </h:panelGrid>
         <h:commandButton action="#{loginBean.login()}" value ="#{msgLogin['form.submit']}" />
 	</h:form>
