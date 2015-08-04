@@ -52,6 +52,7 @@ public class LoginBean {
     		if (username.equals(password)) {
     			// successfully logged in and redirect to start page
     			setUser(username);
+    			logger.info("login succeeded");
     			redirect = "index.xhtml?faces-redirect=true";
     		} else {
     			FacesMessage msgGlobal = new FacesMessage("Login failed");
@@ -71,6 +72,13 @@ public class LoginBean {
     			fContext.addMessage("password", msgPassword);
     		}
     	}
+		if (redirect == null) {
+			logger.info("login failed");
+		}
     	return redirect;
     }
+	
+	public boolean isLoggedIn() {
+		return getUser() != null;
+	}
 }
