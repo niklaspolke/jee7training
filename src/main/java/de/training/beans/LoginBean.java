@@ -10,10 +10,20 @@ import javax.faces.context.FacesContext;
 @ManagedBean
 @SessionScoped
 public class LoginBean {
+	
+	private String user;
 
     private String username;
     
     private String password;
+    
+    public String getUser() {
+    	return user;
+    }
+    
+    public void setUser(String user) {
+    	this.user = user;
+    }
 
     public String getUsername() {
 		return username;
@@ -31,16 +41,18 @@ public class LoginBean {
 		this.password = password;
 	}
 
-	public void login() {
+	public String login() {
     	Logger logger = Logger.getLogger(LoginBean.class.getName());
     	logger.info("trying to login as: " + username);
+    	String redirect = null;
     	
-    	if (username != null && username.length() > 0 && password != null && password.length() > 0) {
+    	FacesContext fContext = FacesContext.getCurrentInstance();
+		if (username != null && username.length() > 0 && password != null && password.length() > 0) {
     		//TODO:do the username/password check
-    		FacesContext fContext = FacesContext.getCurrentInstance();
     		if (username.equals(password)) {
-    			FacesMessage m = new FacesMessage("Successfull login as " + username);
-    			fContext.addMessage(null, m);
+    			// successfully logged in and redirect to start page
+    			setUser(username);
+    			redirect = "index.xhtml?faces-redirect=true";
     		} else {
     			FacesMessage msgGlobal = new FacesMessage("Login failed");
     			FacesMessage msgUsername = new FacesMessage("Login possibly unknown");
@@ -49,7 +61,16 @@ public class LoginBean {
     			fContext.addMessage("username", msgUsername);
     			fContext.addMessage("password", msgPassword);
     		}
+    	} else {
+    		if (username == null || username.length() == 0) {
+    			FacesMessage msgUsername = new FacesMessage("Username empty");
+    			fContext.addMessage("username", msgUsername);
+    		}
+    		if (password == null || password.length() == 0) {
+    			FacesMessage msgPassword = new FacesMessage("Password empty");
+    			fContext.addMessage("password", msgPassword);
+    		}
     	}
+    	return redirect;
     }
-
 }
