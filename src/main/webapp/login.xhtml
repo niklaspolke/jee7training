@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<f:view locale="#{localeBean.locale}" />
+<f:loadBundle var="msgLogin" basename="messages.login" />
+<h:head>
+	<title>
+		<h:outputText value="#{msgLogin['title']}" />
+	</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<h:outputStylesheet library="css" name="pure-min.css" />
+	<h:outputStylesheet library="css" name="grids-responsive-min.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+</h:head>
+<h:body>
+	<h:outputStylesheet library="css" name="colors.css" />
+	<h:head>
+		<h1><h:outputText value="#{msgLogin['title']}" /></h1>
+	</h:head>
+	<h:form>
+		<h:panelGrid columns="2">
+			<h:outputLabel value="#{msgLogin['form.username']}" />
+			<h:inputText value="#{loginBean.username}" />
+			<h:outputLabel value="#{msgLogin['form.password']}" />
+            <h:inputSecret value="#{loginBean.password}" />
+        </h:panelGrid>
+        <h:commandButton action="#{loginBean.login()}" value ="#{msgLogin['form.submit']}" />
+	</h:form>
+</h:body>
+</html>
