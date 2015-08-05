@@ -29,12 +29,6 @@
   		<version>2.2.11</version>
 		<scope>provided</scope> <!-- normally runtime, but currently in tomcat folder shared/lib -->
 	</dependency>
-	<dependency>
-		<!-- JSF library primefaces -->
-		<groupId>org.primefaces</groupId>
-		<artifactId>primefaces</artifactId>
-		<version>5.0</version>
-	</dependency>
     <dependency>
         <!-- JPA Provider EclipseLink -->
         <groupId>org.eclipse.persistence</groupId>
