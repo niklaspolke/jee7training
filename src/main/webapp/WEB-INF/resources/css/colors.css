@@ -2,3 +2,14 @@ body {
 	background-color: #DBBEA1;
 	color: #1B2845
 }
+
+.errorMessage {
+	color: #F00
+}
+
+.errorBorder {
+	color: #F00;
+	border-color: #000;
+	border-style: solid;
+	border-width: thin;
+}
