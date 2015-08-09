@@ -12,25 +12,22 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
+import de.training.entities.Role;
 import de.training.entities.User;
 
 @ManagedBean
 @SessionScoped
 public class LoginBean {
 
-	private String user;
+	private User user;
 
     private String username;
 
     private String password;
 
-    public String getUser() {
-    	return user;
-    }
-
-    public void setUser(String user) {
-    	this.user = user;
-    }
+	public User getUser() {
+		return user;
+	}
 
     public String getUsername() {
 		return username;
@@ -66,9 +63,18 @@ public class LoginBean {
 
 			/* TODO: should be size() == 1 but currently no guarantee of no duplicates */
 			if (loginResult != null && loginResult.size() > 0) {
+				user = loginResult.get(0);
 				// successfully logged in and redirect to start page
-				setUser(username);
 				logger.info("login succeeded");
+
+				String roles = "";
+				for (Role role : user.getRoles()) {
+					if ("".equals(roles) == false) {
+						roles += ", ";
+					}
+					roles += role.getName();
+				}
+				logger.info("user <" + user.getLogin() + "> logged in with roles: " + roles);
 				redirect = "index.xhtml?faces-redirect=true";
 			} else {
 				FacesMessage msgGlobal = new FacesMessage("Login failed");

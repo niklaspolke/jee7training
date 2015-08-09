@@ -1,12 +1,17 @@
 package de.training.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.TableGenerator;
 
 @Entity
@@ -30,6 +35,16 @@ public class User implements Serializable {
 
 	private String password;
 
+	@OneToMany
+	@JoinTable(name="user_role",
+			joinColumns =
+				@JoinColumn(
+					name="user_id", referencedColumnName="id"),
+			inverseJoinColumns =
+				@JoinColumn(
+					name="role_id", referencedColumnName="id"))
+	private Set<Role> roles;
+
 	public User() {
 	}
 
@@ -48,6 +63,23 @@ public class User implements Serializable {
 
 	public String getPassword() {
 		return password;
+	}
+
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
+
+	public void addRole(Role role){
+		if (role != null) {
+			if (getRoles() == null) {
+				setRoles(new HashSet<Role>());
+			}
+			getRoles().add(role);
+		}
 	}
 
 	@Override
