@@ -1,0 +1,31 @@
+to configure Tomcat for SSL:
+
+1.)
+create keys:
+"%JAVA_HOME%\bin\keytool" -genkey -alias tomcat -keyalg RSA
+- use alias "tomcat"
+- use same password for the keystore as for the key
+- if not use "changeit" as password and the default location (home directory
+	of the user) for the .keystore file, than you have to set in within server.xml:
+	- keystoreFile="${user.home}/.keystore"
+	- keystorePass="changeit"
+
+2.)
+enable SSL:
+- enable sslport within server.xml:
+	<Connector
+		protocol="org.apache.coyote.http11.Http11Protocol" port="8443" ...
+
+3.)
+redirect HTTP port to HTTPS port:
+add the following within the web.xml of the tomcat:
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Entire Application</web-resource-name>
+			<url-pattern>/*</url-pattern>
+		</web-resource-collection>
+		<user-data-constraint>
+			<transport-guarantee>CONFIDENTIAL</transport-guarantee>
+		</user-data-constraint>
+	</security-constraint>
+ 
