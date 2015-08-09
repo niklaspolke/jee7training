@@ -30,7 +30,7 @@ public class LoginFilter implements Filter {
 		LoginBean login = (session != null) ? (LoginBean) session.getAttribute("loginBean") : null;
 
 		boolean loggedIn = login != null && login.isLoggedIn();
-		boolean loginRequest = httpRequest.getRequestURI().equals(httpRequest.getContextPath() + "/login.xhtml");
+		boolean loginRequest = httpRequest.getRequestURI().startsWith(httpRequest.getContextPath() + "/login.xhtml");
 		boolean resourceRequest = httpRequest.getRequestURI()
 				.startsWith(httpRequest.getContextPath() + ResourceHandler.RESOURCE_IDENTIFIER);
 
